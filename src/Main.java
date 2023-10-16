@@ -13,27 +13,29 @@ public class Main {
     public static void task1() throws Exception {
         System.out.println("Задание 1");
         System.out.println("Введите год:");
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-        leapCheck(Integer.parseInt(buffer.readLine()));
+        int year = inputInteger();
+        leapCheck(year);
     }
 
     public static void task2() throws Exception {
         System.out.println("Задание 2");
         System.out.println("Какая у вас ОС? \n 0 - iOS \n 1 - Android");
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-        int osId = Integer.parseInt(buffer.readLine());
+        int osId = inputInteger();
         System.out.println("Введите год выпуска девайса:");
-        int yearOfDeviceIssue = Integer.parseInt(buffer.readLine());
+        int yearOfDeviceIssue = inputInteger();
         recommendationWhichApplicationToInstall(osId, yearOfDeviceIssue);
     }
 
     public static void task3() throws Exception{
         System.out.println("Задание 4");
         System.out.println("Введите расстояние в км");
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-        determiningDeliveryTime(Integer.parseInt(buffer.readLine()));
+        int distance = inputInteger();
+        determiningDeliveryTime(distance);
     }
-
+    public static int inputInteger() throws Exception{
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+        return Integer.parseInt(buffer.readLine());
+    }
     public static void leapCheck(int year) {
         boolean leapYear = (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0);
         if (year < 1584) {
@@ -66,11 +68,9 @@ public class Main {
                     break;
             }
         }
-
         System.out.println();
     }
-    public static void determiningDeliveryTime
-            (int deliveryDistance) {
+    public static void determiningDeliveryTime(int deliveryDistance) {
         if (deliveryDistance <= 20) {
             System.out.println("Потребуется 1 день");
         } else if (deliveryDistance > 20 && deliveryDistance <= 60) {
@@ -82,8 +82,6 @@ public class Main {
         }
         System.out.println();
     }
-
-
 }
 
 
